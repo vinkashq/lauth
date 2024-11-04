@@ -52,3 +52,5 @@ jobs:
         tag_name: tests-passed
         prerelease: true
         token: ${{ steps.generate-token.outputs.token }}
+        body: |
+          All the tests are passed for the commit ${{ github.sha }}.
