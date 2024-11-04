@@ -44,6 +44,10 @@ jobs:
       with:
         app-id: ${{ vars.APP_ID }}
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
+    - name: Delete the previous pre-release
+      uses: liudonghua123/delete-release-action@v1
+      with:
+        release_name: tests-passed
     - name: Pre-release
       uses: softprops/action-gh-release@v2.0.9
       if: startsWith(github.ref, 'refs/heads/main')
@@ -52,6 +56,5 @@ jobs:
         tag_name: tests-passed
         prerelease: true
         token: ${{ steps.generate-token.outputs.token }}
-        target_commitish: ${{ github.sha }}
         body: |
           All the tests are passed for the commit ${{ github.sha }}.
