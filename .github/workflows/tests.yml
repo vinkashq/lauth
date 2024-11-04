@@ -47,4 +47,4 @@ jobs:
     - name: Tag tests-passed
       run: |
         git tag tests-passed
-        git push origin tests-passed
+        git push origin tests-passed -f
