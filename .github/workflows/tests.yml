@@ -61,6 +61,14 @@ jobs:
               repo: context.repo.repo,
               release_id: release.data.id
             })
+
+            release.assets.forEach(async (asset) => {
+              await github.rest.repos.deleteReleaseAsset({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                asset_id: asset.id
+              })
+            })
           }
     - name: Pre-release
       uses: softprops/action-gh-release@v2.0.9
