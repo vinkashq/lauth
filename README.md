@@ -1,6 +1,6 @@
 # Vinkas Lauth
 
-[![Tests](https://github.com/vinkashq/lauth/actions/workflows/tests.yml/badge.svg)](https://github.com/vinkashq/lauth/actions/workflows/tests.yml) ![Docker Pulls](https://img.shields.io/docker/pulls/vinkas/lauth?logo=docker&logoColor=1D63ED&label=Pulls&labelColor=E5F2FC&color=1D63ED)
+[![Tests](https://github.com/vinkashq/lauth/actions/workflows/tests.yml/badge.svg)](https://github.com/vinkashq/lauth/actions/workflows/tests.yml) [![Docker Pulls](https://img.shields.io/docker/pulls/vinkas/lauth?logo=docker&logoColor=1D63ED&label=Pulls&labelColor=E5F2FC&color=1D63ED)](https://hub.docker.com/r/vinkas/lauth)
 
 Laravel authentication server
 

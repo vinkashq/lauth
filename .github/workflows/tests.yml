@@ -47,6 +47,7 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: php artisan test
     - name: Tag tests-passed
+      if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
       run: |
         git tag tests-passed
         git push origin tests-passed -f
