@@ -44,13 +44,14 @@ jobs:
       with:
         app-id: ${{ vars.APP_ID }}
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
-    - name: Release
-      uses: softprops/action-gh-release@v2
+    - name: Pre-release
+      uses: softprops/action-gh-release@v2.0.9
       if: startsWith(github.ref, 'refs/heads/main')
       with:
         name: Tests Passed
         tag_name: tests-passed
         prerelease: true
         token: ${{ steps.generate-token.outputs.token }}
+        target_commitish: ${{ github.sha }}
         body: |
           All the tests are passed for the commit ${{ github.sha }}.
