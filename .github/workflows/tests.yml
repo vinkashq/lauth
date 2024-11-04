@@ -15,7 +15,15 @@ jobs:
     - uses: shivammathur/setup-php@2.31.1
       with:
         php-version: '8.3'
+    - name: Generate a token
+      id: generate-token
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ vars.APP_ID }}
+        private-key: ${{ secrets.APP_PRIVATE_KEY }}
     - uses: actions/checkout@v4
+      with:
+        token: ${{ steps.generate-token.outputs.token }}
     - uses: actions/setup-node@v4
       with:
         node-version: '22'
@@ -38,12 +46,6 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: php artisan test
-    - name: Generate a token
-      id: generate-token
-      uses: actions/create-github-app-token@v1
-      with:
-        app-id: ${{ vars.APP_ID }}
-        private-key: ${{ secrets.APP_PRIVATE_KEY }}
     - name: Tag tests-passed
       run: |
         git tag tests-passed
