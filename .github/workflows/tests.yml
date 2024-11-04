@@ -45,9 +45,23 @@ jobs:
         app-id: ${{ vars.APP_ID }}
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
     - name: Delete the previous pre-release
-      uses: liudonghua123/delete-release-action@v1
+      uses: actions/github-script@v7.0.1
       with:
-        release_name: tests-passed
+        github-token: ${{ steps.generate-token.outputs.token }}
+        script: |
+          const release = github.rest.repos.getReleaseByTag({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            tag: 'tests-passed',
+          })
+
+          if (release) {
+            await github.rest.repos.deleteRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: release.data.id
+            })
+          }
     - name: Pre-release
       uses: softprops/action-gh-release@v2.0.9
       if: startsWith(github.ref, 'refs/heads/main')
