@@ -38,6 +38,12 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: php artisan test
+    - name: Generate a token
+      id: generate-token
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ vars.APP_ID }}
+        private-key: ${{ secrets.APP_PRIVATE_KEY }}
     - name: Release
       uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/heads/main')
@@ -45,3 +51,4 @@ jobs:
         name: Tests Passed
         tag_name: tests-passed
         prerelease: true
+        token: ${{ steps.generate-token.outputs.token }}
