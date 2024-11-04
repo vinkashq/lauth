@@ -1,13 +1,9 @@
 name: Docker Hub Build
 
 on:
-  release:
-    types:
-      - created
-      - edited
-      - prereleased
-      - published
-      - released
+  push:
+    tags:
+      - tests-passed
 
 concurrency:
   group: build-${{ format('{0}-{1}', github.head_ref || github.run_number, github.job) }}

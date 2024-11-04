@@ -1,6 +1,8 @@
-# Lauth
+# Vinkas Lauth
 
-[![Tests](https://github.com/vinkashq/lauth/actions/workflows/tests.yml/badge.svg)](https://github.com/vinkashq/lauth/actions/workflows/tests.yml)
+[![Tests](https://github.com/vinkashq/lauth/actions/workflows/tests.yml/badge.svg)](https://github.com/vinkashq/lauth/actions/workflows/tests.yml) ![Docker Pulls](https://img.shields.io/docker/pulls/vinkas/lauth)
+
+Laravel authentication server
 
 ## License
 
