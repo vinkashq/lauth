@@ -44,3 +44,4 @@ jobs:
       with:
         name: Tests Passed
         tag_name: tests-passed
+        prerelease: true
