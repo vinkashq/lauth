@@ -1,7 +1,7 @@
 <?php
 
-test('returns a successful response', function () {
+test('redirect to the homepage URL', function () {
     $response = $this->get('/');
 
-    $response->assertStatus(200);
+    $response->assertStatus(302);
 });
