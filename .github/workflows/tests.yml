@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+    - uses: shivammathur/setup-php@2.31.1
       with:
         php-version: '8.3'
     - uses: actions/checkout@v4
@@ -46,9 +46,12 @@ jobs:
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
     - name: Delete the previous pre-release
       uses: actions/github-script@v7.0.1
+      continue-on-error: true
       with:
         github-token: ${{ steps.generate-token.outputs.token }}
         script: |
+          console.log('searching for release...')
+
           const release = await github.rest.repos.getReleaseByTag({
             owner: context.repo.owner,
             repo: context.repo.repo,
@@ -56,7 +59,8 @@ jobs:
           })
 
           if (release) {
-            release.assets.forEach(async (asset) => {
+            console.log('found release ' + release.data.id)
+            release.data.assets.forEach(async (asset) => {
               await github.rest.repos.deleteReleaseAsset({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
@@ -69,6 +73,8 @@ jobs:
               repo: context.repo.repo,
               release_id: release.data.id
             })
+          } else {
+            console.log('no release found')
           }
     - name: Pre-release
       uses: softprops/action-gh-release@v2.0.9
