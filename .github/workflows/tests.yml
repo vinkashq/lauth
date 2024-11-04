@@ -49,7 +49,7 @@ jobs:
       with:
         github-token: ${{ steps.generate-token.outputs.token }}
         script: |
-          const release = github.rest.repos.getReleaseByTag({
+          const release = await github.rest.repos.getReleaseByTag({
             owner: context.repo.owner,
             repo: context.repo.repo,
             tag: 'tests-passed',
