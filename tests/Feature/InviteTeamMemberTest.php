@@ -15,14 +15,14 @@ test('team members can be invited to team', function () {
     Livewire::test(TeamMemberManager::class, ['team' => $user->currentTeam])
         ->set('addTeamMemberForm', [
             'email' => 'test@example.com',
-            'role' => 'admin',
+            'role'  => 'admin',
         ])->call('addTeamMember');
 
     Mail::assertSent(TeamInvitation::class);
 
     expect($user->currentTeam->fresh()->teamInvitations)->toHaveCount(1);
 })->skip(function () {
-    return ! Features::sendsTeamInvitations();
+    return !Features::sendsTeamInvitations();
 }, 'Team invitations not enabled.');
 
 test('team member invitations can be cancelled', function () {
@@ -34,7 +34,7 @@ test('team member invitations can be cancelled', function () {
     $component = Livewire::test(TeamMemberManager::class, ['team' => $user->currentTeam])
         ->set('addTeamMemberForm', [
             'email' => 'test@example.com',
-            'role' => 'admin',
+            'role'  => 'admin',
         ])->call('addTeamMember');
 
     $invitationId = $user->currentTeam->fresh()->teamInvitations->first()->id;
@@ -44,5 +44,5 @@ test('team member invitations can be cancelled', function () {
 
     expect($user->currentTeam->fresh()->teamInvitations)->toHaveCount(0);
 })->skip(function () {
-    return ! Features::sendsTeamInvitations();
+    return !Features::sendsTeamInvitations();
 }, 'Team invitations not enabled.');

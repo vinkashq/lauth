@@ -12,7 +12,7 @@ test('users can authenticate using the login screen', function () {
     $user = User::factory()->create();
 
     $response = $this->post('/login', [
-        'email' => $user->email,
+        'email'    => $user->email,
         'password' => 'password',
     ]);
 
@@ -24,7 +24,7 @@ test('users can authenticate using username', function () {
     $user = User::factory()->create();
 
     $response = $this->post('/login', [
-        'email' => $user->username,
+        'email'    => $user->username,
         'password' => 'password',
     ]);
 
@@ -36,7 +36,7 @@ test('users cannot authenticate with invalid password', function () {
     $user = User::factory()->create();
 
     $this->post('/login', [
-        'email' => $user->email,
+        'email'    => $user->email,
         'password' => 'wrong-password',
     ]);
 

@@ -14,7 +14,7 @@ test('api tokens can be created', function () {
 
     Livewire::test(ApiTokenManager::class)
         ->set(['createApiTokenForm' => [
-            'name' => 'Test Token',
+            'name'        => 'Test Token',
             'permissions' => [
                 'read',
                 'update',
@@ -28,5 +28,5 @@ test('api tokens can be created', function () {
         ->can('read')->toBeTrue()
         ->can('delete')->toBeFalse();
 })->skip(function () {
-    return ! Features::hasApiFeatures();
+    return !Features::hasApiFeatures();
 }, 'API support is not enabled.');
