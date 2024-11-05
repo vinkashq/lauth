@@ -44,5 +44,14 @@
                 </x-button>
             </div>
         </form>
+
+        <x-slot name="footer">
+            <div class="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+                New user?
+                <a href="{{ route('register') }}" class="font-bold text-accent-800 dark:text-accent-200">
+                    {{ __('Create account') }}
+                </a>
+            </div>
+        </x-slot>
     </x-authentication-card>
 </x-guest-layout>
