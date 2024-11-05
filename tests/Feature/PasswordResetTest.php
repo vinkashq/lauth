@@ -10,7 +10,7 @@ test('reset password link screen can be rendered', function () {
 
     $response->assertStatus(200);
 })->skip(function () {
-    return ! Features::enabled(Features::resetPasswords());
+    return !Features::enabled(Features::resetPasswords());
 }, 'Password updates are not enabled.');
 
 test('reset password link can be requested', function () {
@@ -24,7 +24,7 @@ test('reset password link can be requested', function () {
 
     Notification::assertSentTo($user, ResetPassword::class);
 })->skip(function () {
-    return ! Features::enabled(Features::resetPasswords());
+    return !Features::enabled(Features::resetPasswords());
 }, 'Password updates are not enabled.');
 
 test('reset password screen can be rendered', function () {
@@ -44,7 +44,7 @@ test('reset password screen can be rendered', function () {
         return true;
     });
 })->skip(function () {
-    return ! Features::enabled(Features::resetPasswords());
+    return !Features::enabled(Features::resetPasswords());
 }, 'Password updates are not enabled.');
 
 test('password can be reset with valid token', function () {
@@ -58,9 +58,9 @@ test('password can be reset with valid token', function () {
 
     Notification::assertSentTo($user, ResetPassword::class, function (object $notification) use ($user) {
         $response = $this->post('/reset-password', [
-            'token' => $notification->token,
-            'email' => $user->email,
-            'password' => 'password',
+            'token'                 => $notification->token,
+            'email'                 => $user->email,
+            'password'              => 'password',
             'password_confirmation' => 'password',
         ]);
 
@@ -69,5 +69,5 @@ test('password can be reset with valid token', function () {
         return true;
     });
 })->skip(function () {
-    return ! Features::enabled(Features::resetPasswords());
+    return !Features::enabled(Features::resetPasswords());
 }, 'Password updates are not enabled.');

@@ -15,7 +15,7 @@ test('email verification screen can be rendered', function () {
 
     $response->assertStatus(200);
 })->skip(function () {
-    return ! Features::enabled(Features::emailVerification());
+    return !Features::enabled(Features::emailVerification());
 }, 'Email verification not enabled.');
 
 test('email can be verified', function () {
@@ -38,7 +38,7 @@ test('email can be verified', function () {
     expect($user->fresh()->hasVerifiedEmail())->toBeTrue();
     $response->assertRedirect(route('home', absolute: false).'?verified=1');
 })->skip(function () {
-    return ! Features::enabled(Features::emailVerification());
+    return !Features::enabled(Features::emailVerification());
 }, 'Email verification not enabled.');
 
 test('email can not verified with invalid hash', function () {
@@ -56,5 +56,5 @@ test('email can not verified with invalid hash', function () {
 
     expect($user->fresh()->hasVerifiedEmail())->toBeFalse();
 })->skip(function () {
-    return ! Features::enabled(Features::emailVerification());
+    return !Features::enabled(Features::emailVerification());
 }, 'Email verification not enabled.');
