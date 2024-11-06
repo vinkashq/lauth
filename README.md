@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="294" height="92" src="https://github.com/vinkashq/lauth/blob/main/public/images/logo.png?raw=true">
+</p>
+
 # Vinkas Lauth
 
 [![Tests](https://github.com/vinkashq/lauth/actions/workflows/tests.yml/badge.svg)](https://github.com/vinkashq/lauth/actions/workflows/tests.yml) [![StyleCI](https://github.styleci.io/repos/67142226/shield?branch=main)](https://github.styleci.io/repos/67142226?branch=main) [![Docker Pulls](https://img.shields.io/docker/pulls/vinkas/lauth?logo=docker&logoColor=1D63ED&label=Pulls&labelColor=E5F2FC&color=1D63ED)](https://hub.docker.com/r/vinkas/lauth)
