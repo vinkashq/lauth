@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source srcset="./public/images/logo-white-256h.png?raw=true" media="(prefers-color-scheme: dark)">
-    <img width="294" height="92" src="./public/images/logo-black-256h.png?raw=true">
+    <img width="335" height="92" src="./public/images/logo-black-256h.png?raw=true">
   </picture>
 </p>
 
