@@ -10,6 +10,7 @@
         "laravel/jetstream": "^5.3",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^3.0",
         "sentry/sentry-laravel": "^4.9"
     },
