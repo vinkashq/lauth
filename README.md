@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="294" height="92" src="https://github.com/vinkashq/lauth/blob/main/public/images/logo.png?raw=true">
+  <img width="294" height="92" src="https://github.com/vinkashq/lauth/blob/main/public/images/logo-black-256h.png?raw=true">
 </p>
 
 # Vinkas Lauth

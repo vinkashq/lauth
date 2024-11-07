@@ -5,3 +5,7 @@
 [x-cloak] {
     display: none;
 }
+
+body {
+    @apply bg-white dark:bg-black;
+}
