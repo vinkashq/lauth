@@ -1,3 +1,3 @@
 <a href="/">
-    <img src="/images/logomark.png" class="w-16 h-16" alt="Lauth Logomark" />
+    <img src="{{ config('lauth.logomark_url') }}" class="w-16 h-16" alt="{{ config('app.name') }} Logomark" />
 </a>
