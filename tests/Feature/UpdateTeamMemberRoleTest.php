@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Laravel\Jetstream\Http\Livewire\TeamMemberManager;
+use Laravel\Jetstream\Jetstream;
 use Livewire\Livewire;
 
 test('team member roles can be updated', function () {
@@ -21,7 +22,9 @@ test('team member roles can be updated', function () {
         $user->currentTeam->fresh(),
         'editor'
     ))->toBeTrue();
-});
+})->skip(function () {
+    return !Jetstream::hasTeamFeatures();
+}, 'Teams feature is not enabled.');
 
 test('only team owner can update team member roles', function () {
     $user = User::factory()->withPersonalTeam()->create();
@@ -43,4 +46,6 @@ test('only team owner can update team member roles', function () {
         $user->currentTeam->fresh(),
         'admin'
     ))->toBeTrue();
-});
+})->skip(function () {
+    return !Jetstream::hasTeamFeatures();
+}, 'Teams feature is not enabled.');

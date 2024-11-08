@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Laravel\Jetstream\Http\Livewire\CreateTeamForm;
+use Laravel\Jetstream\Jetstream;
 use Livewire\Livewire;
 
 test('teams can be created', function () {
@@ -13,4 +14,6 @@ test('teams can be created', function () {
 
     expect($user->fresh()->ownedTeams)->toHaveCount(2);
     expect($user->fresh()->ownedTeams()->latest('id')->first()->name)->toEqual('Test Team');
-});
+})->skip(function () {
+    return !Jetstream::hasTeamFeatures();
+}, 'Teams feature is not enabled.');

@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Laravel\Jetstream\Http\Livewire\TeamMemberManager;
+use Laravel\Jetstream\Jetstream;
 use Livewire\Livewire;
 
 test('users can leave teams', function () {
@@ -18,7 +19,9 @@ test('users can leave teams', function () {
         ->call('leaveTeam');
 
     expect($user->currentTeam->fresh()->users)->toHaveCount(0);
-});
+})->skip(function () {
+    return !Jetstream::hasTeamFeatures();
+}, 'Teams feature is not enabled.');
 
 test('team owners cant leave their own team', function () {
     $this->actingAs($user = User::factory()->withPersonalTeam()->create());
@@ -28,4 +31,6 @@ test('team owners cant leave their own team', function () {
         ->assertHasErrors(['team']);
 
     expect($user->currentTeam->fresh())->not->toBeNull();
-});
+})->skip(function () {
+    return !Jetstream::hasTeamFeatures();
+}, 'Teams feature is not enabled.');

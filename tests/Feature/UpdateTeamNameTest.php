@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Laravel\Jetstream\Http\Livewire\UpdateTeamNameForm;
+use Laravel\Jetstream\Jetstream;
 use Livewire\Livewire;
 
 test('team names can be updated', function () {
@@ -13,4 +14,6 @@ test('team names can be updated', function () {
 
     expect($user->fresh()->ownedTeams)->toHaveCount(1);
     expect($user->currentTeam->fresh()->name)->toEqual('Test Team');
-});
+})->skip(function () {
+    return !Jetstream::hasTeamFeatures();
+}, 'Teams feature is not enabled.');
