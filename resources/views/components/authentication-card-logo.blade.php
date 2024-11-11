@@ -1,6 +1,6 @@
 <a href="/">
     <picture>
-        <source srcset="{{ config('lauth.logomark_url.dark') }}" media="(prefers-color-scheme: dark)">
-        <img src="{{ config('lauth.logomark_url.light') }}" class="w-16 h-16" alt="{{ config('app.name') }} Logomark" />
+        <source srcset="{{ config('lauth.logo_url.dark') }}" media="(prefers-color-scheme: dark)">
+        <img src="{{ config('lauth.logo_url.light') }}" class="h-12" alt="{{ config('app.name') }} Logo" />
     </picture>
 </a>
