@@ -19,7 +19,7 @@ class LoginResponse implements LoginResponseContract
             return response()->json(['two_factor' => false]);
         }
 
-        $response = Connect::find()->getRedirectResponse();
+        $response = Connect::find()?->getRedirectResponse();
         if ($response) {
             return $response;
         }
