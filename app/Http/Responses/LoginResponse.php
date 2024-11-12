@@ -8,10 +8,9 @@ use Vinkas\Discourse\Models\Connect;
 
 class LoginResponse implements LoginResponseContract
 {
-
     /**
      * @param $request
-     * 
+     *
      * @return mixed
      */
     public function toResponse($request)
