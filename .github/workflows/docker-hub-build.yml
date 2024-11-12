@@ -3,7 +3,8 @@ name: Docker Hub Build
 on:
   push:
     tags:
-      - tests-passed
+      - 'tests-passed'
+      - 'v*'
 
 concurrency:
   group: build-${{ format('{0}-{1}', github.head_ref || github.run_number, github.job) }}
@@ -14,7 +15,7 @@ env:
 
 jobs:
   build:
-    if: startsWith(github.ref, 'refs/tags/tests-passed')
+    if: startsWith(github.ref, 'refs/tags')
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
@@ -30,6 +31,7 @@ jobs:
 
       - name: Docker meta
         id: meta
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: docker/metadata-action@v5
         with:
           images: vinkas/lauth
@@ -41,8 +43,17 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: docker/build-push-action@v6
         with:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push tests-passed
+        if: startsWith(github.ref, 'refs/tags/tests-passed')
+        uses: docker/build-push-action@v6
+        with:
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: vinkas/lauth:tests-passed
           labels: ${{ steps.meta.outputs.labels }}
