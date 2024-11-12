@@ -2,7 +2,6 @@
 
 namespace App\Http\Responses;
 
-use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 use Laravel\Fortify\Fortify;
 use Vinkas\Discourse\Models\Connect;
@@ -11,21 +10,22 @@ class LoginResponse implements LoginResponseContract
 {
 
     /**
-     * @param  $request
+     * @param $request
+     * 
      * @return mixed
      */
     public function toResponse($request)
     {
-      if ($request->wantsJson()) {
-        return response()->json(['two_factor' => false]);
-      }
+        if ($request->wantsJson()) {
+            return response()->json(['two_factor' => false]);
+        }
 
-      $response = Connect::find()->getRedirectResponse();
-      if ($response) {
-        return $response;
-      }
+        $response = Connect::find()->getRedirectResponse();
+        if ($response) {
+            return $response;
+        }
 
-      return redirect()->intended(Fortify::redirects('login'));
+        return redirect()->intended(Fortify::redirects('login'));
     }
 
 }
