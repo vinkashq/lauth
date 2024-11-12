@@ -26,5 +26,4 @@ class LoginResponse implements LoginResponseContract
 
         return redirect()->intended(Fortify::redirects('login'));
     }
-
 }
