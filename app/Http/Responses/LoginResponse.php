@@ -4,7 +4,7 @@ namespace App\Http\Responses;
 
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 use Laravel\Fortify\Fortify;
-use Vinkas\Discourse\Models\Connect;
+use Vinkas\Discourse\Models\Connect as DiscourseConnect;
 
 class LoginResponse implements LoginResponseContract
 {
@@ -19,7 +19,7 @@ class LoginResponse implements LoginResponseContract
             return response()->json(['two_factor' => false]);
         }
 
-        $response = Connect::find()?->getRedirectResponse();
+        $response = DiscourseConnect::find()?->getRedirectResponse();
         if ($response) {
             return $response;
         }
