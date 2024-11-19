@@ -8,7 +8,7 @@ $providers = [
     Vinkas\Discourse\ServiceProvider::class,
 ];
 
-if (app()->environment('local')) {
+if (app()->isLocal()) {
     $providers[] = Laravel\Telescope\TelescopeServiceProvider::class;
     $providers[] = App\Providers\TelescopeServiceProvider::class;
 }
