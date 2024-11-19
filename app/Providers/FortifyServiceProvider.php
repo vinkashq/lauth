@@ -53,6 +53,7 @@ class FortifyServiceProvider extends ServiceProvider
                 ->orWhere('username', $request->email)->first();
 
             if ($user &&
+                $user->isNotBanned() &&
                 Hash::check($request->password, $user->password)) {
                 return $user;
             }
