@@ -6,6 +6,7 @@ $providers = [
     App\Providers\JetstreamServiceProvider::class,
     Cog\Laravel\Ban\Providers\BanServiceProvider::class,
     Vinkas\Discourse\ServiceProvider::class,
+    Vinkas\Cda\Server\CdaServiceProvider::class,
 ];
 
 if (app()->isLocal()) {
