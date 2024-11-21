@@ -4,8 +4,8 @@ namespace App\Http\Responses;
 
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 use Laravel\Fortify\Fortify;
-use Vinkas\Discourse\Models\Connect as DiscourseConnect;
 use Vinkas\Cda\Server\Client as CdaClient;
+use Vinkas\Discourse\Models\Connect as DiscourseConnect;
 
 class LoginResponse implements LoginResponseContract
 {
