@@ -1,7 +1,7 @@
 {
     "name": "vinkas/lauth",
     "type": "project",
-    "description": "The skeleton application for the Laravel authentication server.",
+    "description": "Laravel Jetstream authentication server",
     "keywords": ["vinkas", "laravel", "auth-server", "authentication"],
     "license": "MIT",
     "require": {

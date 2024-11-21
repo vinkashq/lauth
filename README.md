@@ -19,7 +19,13 @@
 
 # Vinkas Lauth
 
-Laravel authentication server
+Laravel Jetstream authentication server
+
+### Features
+
+- User Ban
+- Cross-Domain Authentication (CDA)
+- [Discourse Connect](https://meta.discourse.org/t/setup-discourseconnect-official-single-sign-on-for-discourse-sso/13045)
 
 ## License
 
